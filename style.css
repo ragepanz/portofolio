@@ -1107,6 +1107,89 @@ h1, h2, h3, h4 {
   flex-wrap: wrap;
 }
 
+.page-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  animation: intro-exit 0.7s ease 1.55s forwards;
+  pointer-events: none;
+}
+
+.intro-box {
+  width: min(280px, 72vw);
+  animation: intro-content-exit 0.45s ease 1.2s forwards;
+}
+
+.intro-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  margin-bottom: 16px;
+}
+
+.intro-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #2ea043;
+  box-shadow: 0 0 14px rgba(46, 160, 67, 0.9);
+  animation: intro-pulse 0.9s ease-in-out infinite alternate;
+}
+
+.intro-bar {
+  height: 2px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: rgba(240, 246, 252, 0.12);
+}
+
+.intro-progress {
+  width: 0;
+  height: 100%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+  animation: intro-progress 1.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes intro-progress {
+  to { width: 100%; }
+}
+
+@keyframes intro-pulse {
+  to { transform: scale(1.35); opacity: 0.65; }
+}
+
+@keyframes intro-content-exit {
+  to { opacity: 0; transform: translateY(-8px); }
+}
+
+@keyframes intro-exit {
+  to { opacity: 0; visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-intro,
+  .intro-box,
+  .intro-progress,
+  .intro-dot {
+    animation: none;
+  }
+
+  .page-intro {
+    display: none;
+  }
+}
+
 /* ---------- SCROLL REVEAL ANIMATION (Smooth & Classy) ---------- */
 .reveal {
   opacity: 0;
