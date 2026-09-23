@@ -48,6 +48,13 @@ document.addEventListener('DOMContentLoaded', function () {
   // -------------------------------------------------------------
   // 4. SPOTLIGHT MOUSE GLOW EFFECT (Interactive hover on project cards)
   // -------------------------------------------------------------
+  var pointerGlow = document.querySelector('.pointer-glow');
+  if (pointerGlow) {
+    window.addEventListener('pointermove', function (e) {
+      pointerGlow.style.transform = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px) translate(-50%, -50%)';
+    });
+  }
+
   var projectCards = document.querySelectorAll('.project-card');
   projectCards.forEach(function (card) {
     card.addEventListener('mousemove', function (e) {
