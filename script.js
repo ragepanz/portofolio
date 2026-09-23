@@ -196,16 +196,16 @@ document.addEventListener('DOMContentLoaded', function () {
   // -------------------------------------------------------------
   var caseStudies = {
     lifevest: {
-      category: 'Enterprise Asset Management & Maintenance',
+      category: 'Web application',
       title: 'Life Vest Tracker — PT GMF AeroAsia',
-      problem: 'Dalam industri Maintenance, Repair, and Overhaul (MRO) aviasi, pelampung keselamatan (life vest) wajib mematuhi standar kelaikan udara (airworthiness) dengan jadwal inspeksi berkala yang ketat. Proses pencatatan manual berbasis spreadsheet memiliki risiko human error yang tinggi, potensi terlewatnya batas masa berlaku (expiry date), serta sulitnya penelusuran histori pemeliharaan saat proses audit kelaikan terbang.',
-      solution: 'Mengembangkan sistem informasi pelacakan siklus hidup komponen keselamatan terpusat berbasis web menggunakan Laravel MVC dan database relasional MySQL. Arsitektur data dirancang untuk memetakan hierarki armada (Aircraft Tail Number), nomor part & serial number, lokasi rak/kabin pesawat, serta otomasi kalkulasi tanggal kedaluwarsa dan verifikasi teknisi.',
+      problem: 'Pencatatan manual membuat riwayat perawatan, masa berlaku, dan lokasi life vest sulit ditelusuri saat dibutuhkan.',
+      solution: 'Saya membuat aplikasi Laravel dengan MySQL untuk menyimpan data unit, lokasi, riwayat inspeksi, dan tanggal kedaluwarsa dalam satu tempat.',
       features: [
-        'Lifecycle & Expiry Tracking: Kalkulasi otomatis sisa masa pakai (life limit) komponen pelampung dengan sistem indikator status kelaikan.',
-        'Aircraft Cabin Mapping: Pemetaan lokasi fisik unit per armada pesawat (tail number & baris kursi kabin) untuk efisiensi rotasi dan penggantian komponen.',
-        'Preventative Inspection Alert: Sistem peringatan otomatis sebelum unit life vest mendekati ambang batas masa inspeksi rutin (overhaul).',
-        'Audit Trail & Verification: Pencatatan rekam jejak digital mencakup teknisi penanggung jawab, tanggal servis, nomor sertifikasi, dan log inspeksi untuk kebutuhan audit regulasi aviasi.',
-        'Reporting Engine: Pembuatan rekap laporan status inventaris dan kelaikan armada secara real-time untuk tim operasional dan quality assurance.'
+        'Data unit: Nomor part, serial number, dan status setiap life vest.',
+        'Lokasi: Pemetaan unit berdasarkan armada dan posisi kabin.',
+        'Jadwal inspeksi: Penanda untuk unit yang mendekati masa perawatan atau kedaluwarsa.',
+        'Riwayat aktivitas: Catatan inspeksi dan perubahan data oleh teknisi.',
+        'Laporan: Ringkasan inventaris dan status unit.'
       ],
       tags: ['Laravel', 'PHP', 'Blade', 'MySQL', 'Relational Database', 'Asset Tracking', 'MRO System'],
       actions: [
@@ -213,15 +213,15 @@ document.addEventListener('DOMContentLoaded', function () {
       ]
     },
     certification: {
-      category: 'Digital Credential & Verification Engine',
+      category: 'Web platform',
       title: 'Certification Dashboard Platform',
-      problem: 'Pengelolaan arsip sertifikat kompetensi dan lisensi dalam format dokumen terpisah menyulitkan proses validasi keaslian dokumen oleh pihak ketiga, rentan manipulasi data, dan tidak memiliki direktori pencarian publik yang cepat serta terverifikasi.',
-      solution: 'Merancang arsitektur platform arsip dan verifikasi sertifikat digital terpusat. Menggunakan mekanisme validasi berbasis ID lisensi unik dengan frontend berbasis PHP/Blade yang dioptimasi untuk deployment serverless di cloud infrastructure Vercel, memastikan waktu muat halaman mendekati instan dan tanpa latency.',
+      problem: 'Arsip sertifikat fisik atau file terpisah menyulitkan orang lain untuk mengecek keaslian dokumen secara cepat.',
+      solution: 'Saya membuat web berbasis PHP dan Vercel agar setiap sertifikat punya tautan publik yang bisa diakses langsung untuk verifikasi.',
       features: [
-        'Public Certificate Verification: Mesin pencarian dan validasi keabsahan dokumen publik menggunakan kode identitas / UUID sertifikat unik.',
-        'Centralized Search & Filter Index: Dashboard pengindeksan data sertifikat dengan performa penelusuran cepat berdasarkan nama, bidang sertifikasi, atau tanggal penerbitan.',
-        'Responsive Print-Ready Output: Antarmuka pratinjau sertifikat digital yang adaptif dan terstandarisasi untuk kebutuhan cetak maupun ekspor berkas.',
-        'Serverless Cloud Architecture: Deployment teroptimasi di Vercel dengan manajemen rute modern untuk menjamin ketersediaan tinggi (high availability).'
+        'Cek sertifikat: Verifikasi dokumen menggunakan kode atau ID unik.',
+        'Pencarian: Menemukan data sertifikat dengan cepat.',
+        'Tampilan cetak: Format halaman yang rapi saat dicetak atau disimpan ke PDF.',
+        'Hosting: Dijalankan di serverless Vercel agar cepat diakses.'
       ],
       tags: ['PHP', 'Blade', 'Vercel Serverless', 'Cloud Deployment', 'Credential Verification', 'CSS3'],
       actions: [
@@ -230,15 +230,15 @@ document.addEventListener('DOMContentLoaded', function () {
       ]
     },
     ldnd: {
-      category: 'Modern Web Architecture & E-Commerce Catalog',
+      category: 'Product catalog',
       title: 'LDND Carpet — Next.js & TypeScript',
-      problem: 'Katalog produk modern membutuhkan penyajian visual aset beresolusi tinggi dengan interaksi pengguna yang mulus, namun sering kali terkendala waktu muat halaman yang lambat, bundle size yang berat, dan struktur data yang rawan error pada aplikasi berskala besar.',
-      solution: 'Membangun aplikasi web berperforma tinggi menggunakan framework Next.js (App Router) berbasis TypeScript untuk menjamin type-safety. Memanfaatkan fitur Server-Side Rendering (SSR) dan Incremental Static Regeneration (ISR) guna menghasilkan performa loading optimal dan indeks SEO yang kuat.',
+      problem: 'Katalog produk butuh loading cepat dan gambar berkualitas tinggi tanpa bikin web lambat.',
+      solution: 'Saya pakai Next.js dan TypeScript agar komponen terstruktur, gambar otomatis dioptimasi, dan navigasi terasa smooth.',
       features: [
-        'Type-Safe Component Architecture: Struktur komponen UI React modular dan scalable dengan pengetikan ketat TypeScript.',
-        'Image Optimization Pipeline: Pemanfaatan Next/Image untuk lazy-loading otomatis, kompresi format WebP/AVIF modern, dan pencegahan Cumulative Layout Shift (CLS).',
-        'Instant Page Transition: Navigasi katalog produk tanpa refresh halaman penuh (Single Page Experience) dengan prefetching rute bawaan Next.js.',
-        'Tailwind CSS Design Tokens: Sistem styling berbasis atomic CSS yang terorganisir, responsif di segala ukuran layar, dan bersih dari CSS bloat.'
+        'Komponen React: Terorganisir dengan TypeScript untuk menghindari error.',
+        'Gambar: Otomatis dikompress dan lazy-load dengan Next/Image.',
+        'Navigasi: Pindah halaman tanpa reload penuh.',
+        'Styling: Tailwind CSS untuk tampilan yang responsif.'
       ],
       tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel', 'SSR', 'Web Performance'],
       actions: [
@@ -247,15 +247,15 @@ document.addEventListener('DOMContentLoaded', function () {
       ]
     },
     ticketing: {
-      category: 'Internal Operations & Helpdesk Workflow',
+      category: 'Internal application',
       title: 'Project Ticketing / Helpdesk System',
-      problem: 'Penanganan insiden teknis dan tiket operasional antar divisi yang berjalan tanpa sistem terpusat sering menimbulkan tumpang tindih penugasan, hilangnya visibilitas status penyelesaian, dan tidak adanya metrik Service Level Agreement (SLA) yang terukur.',
-      solution: 'Mengembangkan aplikasi helpdesk workflow management menggunakan framework Laravel. Sistem mengimplementasikan Finite State Machine untuk transisi status tiket yang ketat, matriks prioritas berdasarkan urgensi masalah, serta sistem pencatatan log aktivitas terperinci pada setiap pembaruan tiket.',
+      problem: 'Penanganan tiket tugas antar divisi tidak terpusat sehingga status pekerjaan sulit dipantau.',
+      solution: 'Saya buat aplikasi Laravel yang mengelola siklus tiket dari awal sampai selesai, dengan catatan log untuk setiap perubahan.',
       features: [
-        'Role & Workflow State Machine: Manajemen siklus hidup tiket terstruktur mulai dari Open, Triage, In Progress, Resolved, hingga Closed.',
-        'Priority & Categorization Matrix: Klasifikasi tiket berdasarkan tingkat urgensi insiden untuk memprioritaskan penyelesaian issue kritis terlebih dahulu.',
-        'Activity Timeline & Threaded Notes: Rekam jejak kronologis setiap perubahan status, lampiran teknis, dan catatan komunikasi teknisi dalam satu tampilan terpadu.',
-        'Operational Dashboard: Visualisasi jumlah antrean tiket dan performa penyelesaian tugas untuk monitoring beban kerja tim.'
+        'Status tiket: Dari open sampai closed dengan transisi yang terstruktur.',
+        'Prioritas: Klasifikasi tingkat urgensi untuk menangani masalah penting lebih dulu.',
+        'Log aktivitas: Riwayat update, catatan, dan lampiran file untuk setiap tiket.',
+        'Dashboard: Melihat antrean dan beban kerja tim secara langsung.'
       ],
       tags: ['Laravel', 'PHP', 'Blade', 'MySQL', 'Helpdesk Workflow', 'State Management', 'RBAC'],
       actions: [
