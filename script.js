@@ -6,18 +6,16 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // -------------------------------------------------------------
-  // 2. INFINITE MARQUEE CLONER (Smooth Seamless Loop)
+  // 2. INFINITE MARQUEE CLONER (Pure CSS Seamless Loop)
   // -------------------------------------------------------------
   var stackTrack = document.getElementById('stack-track');
   var stackSource = document.getElementById('stack-source');
   if (stackTrack && stackSource) {
-    stackSource.innerHTML += stackSource.innerHTML;
-    for (var i = 0; i < 2; i++) {
-      var cloneGroup = stackSource.cloneNode(true);
-      cloneGroup.removeAttribute('id');
-      cloneGroup.setAttribute('aria-hidden', 'true');
-      stackTrack.appendChild(cloneGroup);
-    }
+    // Gandakan satu grup yang persis sama untuk loop seamless murni (50% translation)
+    var cloneGroup = stackSource.cloneNode(true);
+    cloneGroup.removeAttribute('id');
+    cloneGroup.setAttribute('aria-hidden', 'true');
+    stackTrack.appendChild(cloneGroup);
   }
 
   // -------------------------------------------------------------
@@ -34,15 +32,14 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }, {
       root: null,
-      threshold: 0.12,
-      rootMargin: '0px 0px -40px 0px'
+      threshold: 0.05,
+      rootMargin: '0px 0px -20px 0px'
     });
 
     revealElements.forEach(function (el) {
       revealObserver.observe(el);
     });
   } else {
-    // Fallback if browser doesn't support IntersectionObserver
     revealElements.forEach(function (el) {
       el.classList.add('active');
     });
@@ -63,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // -------------------------------------------------------------
-  // 5. CONTACT FORM SUBMIT (Support Vercel & Web3Forms/Formspree/Mailto)
+  // 5. CONTACT FORM SUBMIT (Support Vercel & Web3Forms/Mailto)
   // -------------------------------------------------------------
   var formEl = document.getElementById('contact-form');
   if (formEl) {
@@ -90,7 +87,6 @@ document.addEventListener('DOMContentLoaded', function () {
         submitBtn.textContent = 'Mengirim...';
       }
 
-      // Check if running on Google Apps Script environment
       if (typeof google !== 'undefined' && google.script && google.script.run) {
         google.script.run
           .withSuccessHandler(function (res) {
@@ -118,7 +114,6 @@ document.addEventListener('DOMContentLoaded', function () {
           })
           .sendContactMessage({ name: name, email: email, message: message });
       } else {
-        // Fallback for Vercel deployment: opens mailto direct compose or handles client-side form response
         setTimeout(function () {
           if (statusEl) {
             statusEl.className = 'success';
@@ -129,7 +124,6 @@ document.addEventListener('DOMContentLoaded', function () {
             submitBtn.textContent = 'Terkirim ✓';
           }
 
-          // Open prefilled email client
           var subject = encodeURIComponent('Pesan Portofolio dari ' + name);
           var body = encodeURIComponent('Halo Ivan,\n\n' + message + '\n\n--\nDari: ' + name + ' (' + email + ')');
           window.location.href = 'mailto:ivanedsr@gmail.com?subject=' + subject + '&body=' + body;
@@ -158,7 +152,6 @@ document.addEventListener('DOMContentLoaded', function () {
       var timeElapsed = currentTime - startTime;
       var progress = Math.min(timeElapsed / duration, 1);
 
-      // EaseInOutCubic curve
       var ease = progress < 0.5
         ? 4 * progress * progress * progress
         : 1 - Math.pow(-2 * progress + 2, 3) / 2;

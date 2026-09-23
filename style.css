@@ -371,7 +371,7 @@ h1, h2, h3, h4 {
   font-size: 0.65rem;
 }
 
-/* ---------- MARQUEE TECH STACK ---------- */
+/* ---------- MARQUEE TECH STACK (Continuous Infinite Loop) ---------- */
 .stack-row {
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -381,6 +381,7 @@ h1, h2, h3, h4 {
   overflow: hidden;
   padding: 16px 0;
   position: relative;
+  width: 100%;
 }
 
 .stack-row::before,
@@ -405,9 +406,10 @@ h1, h2, h3, h4 {
 }
 
 .stack-track {
-  display: flex;
-  width: max-content;
-  animation: marquee-scroll 32s linear infinite;
+  display: flex !important;
+  width: max-content !important;
+  animation: marquee-scroll 25s linear infinite !important;
+  will-change: transform;
 }
 
 .stack-track:hover {
@@ -415,15 +417,20 @@ h1, h2, h3, h4 {
 }
 
 @keyframes marquee-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .stack-group {
-  display: flex;
+  display: flex !important;
   align-items: center;
   gap: 16px;
   padding-right: 16px;
+  flex-shrink: 0;
 }
 
 .stack-badge {
@@ -439,6 +446,7 @@ h1, h2, h3, h4 {
   font-weight: 500;
   white-space: nowrap;
   transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 
 .stack-badge:hover {
@@ -1073,15 +1081,6 @@ h1, h2, h3, h4 {
   .hero { padding: 40px 0 48px; }
   .section { padding: 56px 0; }
   .hero-avatar-box { width: 170px; height: 170px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
 }
 
 :focus-visible {
